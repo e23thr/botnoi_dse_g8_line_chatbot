@@ -1,3 +1,8 @@
+import base64
+import hashlib
+import hmac
+
+
 import os
 import os.path
 from dotenv import load_dotenv
@@ -22,13 +27,19 @@ app.url_map.strict_slashes = False
 
 CORS(app)
 
+
+@app.route("/")
+def root_route():
+    return "OK"
+
+
 api.add_resource(LinebotApp, '/api/linebot')
 
 if __name__ == "__main__":
     app.run(threaded=True)
 
-    # for testing
-    # https://developers.google.com/sheets/api/quickstart/python
-    # rows = read_friends()
-    # print(rows)
-    # write_friends('myid', 'myname')
+# for testing
+# https://developers.google.com/sheets/api/quickstart/python
+# rows = read_friends()
+# print(rows)
+# write_friends('myid', 'myname')
