@@ -26,6 +26,7 @@ api.add_resource(LinebotApp, '/api/linebot')
 
 if __name__ == "__main__":
     app.run(threaded=True)
+
     # for testing
     # https://developers.google.com/sheets/api/quickstart/python
     # rows = read_friends()
