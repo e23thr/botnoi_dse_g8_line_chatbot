@@ -1,7 +1,8 @@
 
 import os
 from flask_restful import Resource
-from flask import request, abort
+from flask import request, abort, redirect
+import requests
 
 from linebot import LineBotApi, WebhookHandler
 
@@ -15,7 +16,7 @@ load_dotenv()
 LINE_TOKEN = os.getenv('LINE_CHANNEL_TOKEN')
 LINE_SECRET = os.getenv('LINE_CHANNEL_SECRET')
 
-print('line.py {}'.format(LINE_TOKEN))
+# print('line.py {}'.format(LINE_TOKEN))
 
 linebotapi = LineBotApi(LINE_TOKEN)
 webhook_handler = WebhookHandler(LINE_SECRET)
@@ -40,7 +41,13 @@ def handle_follow():
 
 
 @webhook_handler.add(MessageEvent)
-def hanlde_message():
+def handle_message():
+    # need to pass to botnoi platform
+    # https://api-gateway.botnoinoi.com/webhook/5f573d677c3ff7000ac2248c/line
+    BOTNOI_ENDPOINT = os.getenv("BOTNOI_ENDPOINT")
+    return redirect(BOTNOI_ENDPOINT)
+    # request.post(BOTNOI_ENDPOINT, body=request.get_data())
+    # pass
 
 
 @webhook_handler.add(UnfollowEvent)
