@@ -45,10 +45,15 @@ def format_place(place_data):
 def calculate_distance(lat1, lon1, lat2, lon2):
     R = 6373.0
 
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
+    la1 = radians(lat1)
+    ln1 = radians(lon1)
+    la2 = radians(lat2)
+    ln2 = radians(lon2)
 
-    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    dlon = ln2 - ln1
+    dlat = la2 - la1
+
+    a = sin(dlat / 2)**2 + cos(la1) * cos(la2) * sin(dlon / 2)**2
     c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
     distance = R * c
@@ -61,8 +66,8 @@ def gmap_pipeline(lat, lon):
     # print(result)
     places_list = result['results']
     data_list = []
-    print("places: {}".format(len(places_list)))
-    for place in list(places_list[:10]):
+    # print("places: {}".format(len(places_list)))
+    for place in list(places_list):
         data = {}
         # print("\n\n{}".format(place['name']))
         # print(place)
@@ -102,7 +107,12 @@ def gmap_pipeline(lat, lon):
             data['rating'] = place_info['rating']
         else:
             data['rating'] = -1
-
+        data['distance'] = calculate_distance(
+            lat, lon, data['lat'], data['lon'])
         data_list.append(data)
 
-    return data_list
+    # for d in data_list:
+    #     print(d['distance'])
+    # sort by distance
+    data_list = sorted(data_list, key=lambda d: d['distance'])
+    return data_list[:10]

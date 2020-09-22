@@ -56,42 +56,46 @@ def handle_location(event):
     lon = event.message.longitude
     shops_list = gmap_pipeline(lat, lon)
     columns = []
-    for shop in shops_list:
-        actions = []
-        actions.append(URIAction(
-            label="แผนที่", uri="https://www.google.com/maps/@{},{},16z".format(shop['lat'], shop['lon'])))
+    if (len(shops_list) > 0):
+        for shop in shops_list:
+            actions = []
+            actions.append(URIAction(
+                label="แผนที่", uri="https://www.google.com/maps/@{},{},16z".format(shop['lat'], shop['lon'])))
 
-        if (shop['phone'] != ''):
-            actions.append(URIAction(label="T:{}".format(shop['phone']), uri="tel:{}".format(
-                shop['phone'].replace(" ", ""))[:20]))
-        else:
-            actions.append(URIAction(label="No phone", uri="tel:000"))
+            if (shop['phone'] != ''):
+                actions.append(URIAction(label="T:{}".format(shop['phone']), uri="tel:{}".format(
+                    shop['phone'].replace(" ", ""))[:20]))
+            else:
+                actions.append(URIAction(label="No phone", uri="tel:000"))
 
-        column = CarouselColumn(
-            thumbnail_image_url=shop['photo_url'],
-            title=shop['shop_name'],
-            text="ที่อยู่: {}".format(shop['address'])[:60],
-            actions=actions
+            column = CarouselColumn(
+                thumbnail_image_url=shop['photo_url'],
+                title="[{:.1f}กม.] {}".format(
+                    shop['distance'], shop['shop_name'])[:40],
+                text="ที่อยู่: {}".format(shop['address'])[:60],
+                actions=actions
+            )
+            # print(column)
+            columns.append(column)
+            # print(len(columns))
+
+        template_message = TemplateSendMessage(
+            alt_text="ร้านขายยา",
+            template=CarouselTemplate(
+                columns=columns
+            )
+            # columns=columns
         )
-        # print(column)
-        columns.append(column)
-        # print(len(columns))
 
-    template_message = TemplateSendMessage(
-        alt_text="ร้านขายยา",
-        template=CarouselTemplate(
-            columns=columns
+        return linebotapi.reply_message(
+            event.reply_token,
+            template_message
         )
-        # columns=columns
-    )
-
-    print(template_message)
-
-    return linebotapi.reply_message(
-        event.reply_token,
-        template_message
-    )
-
+    else:
+        return linebotapi.reply_message(
+            event.reply_token,
+            TextSendMessage(text="น้องอันนาหาร้านขายยาใกล้ๆ ไม่เจอเลยค่ะ")
+        )
     # linebotapi.reply_message(event.reply_token, TextSendMessage(
     #     text="lat {}, lon {}".format(lat, lon)))
 
