@@ -58,9 +58,10 @@ def handle_location(event):
     columns = []
     if (len(shops_list) > 0):
         for shop in shops_list:
+            # 13.7182753,100.4630027
             actions = []
             actions.append(URIAction(
-                label="แผนที่", uri="https://www.google.com/maps/@{},{},16z".format(shop['lat'], shop['lon'])))
+                label="แผนที่", uri="https://www.google.com/maps/search/?api=1&query={},{}".format(shop['lat'], shop['lon'])))
 
             if (shop['phone'] != ''):
                 actions.append(URIAction(label="T:{}".format(shop['phone']), uri="tel:{}".format(
