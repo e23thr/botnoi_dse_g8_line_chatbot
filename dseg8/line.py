@@ -10,7 +10,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, FollowEvent, UnfollowEvent,
     LocationMessage, TextSendMessage, TemplateSendMessage, CarouselColumn, URIAction, CarouselTemplate, StickerMessage,
-    ImageMessage, VideoMessage, AudioMessage
+    ImageMessage
 )
 
 from dotenv import load_dotenv
