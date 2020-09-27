@@ -9,7 +9,8 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, FollowEvent, UnfollowEvent,
-    LocationMessage, TextSendMessage, TemplateSendMessage, CarouselColumn, URIAction, CarouselTemplate
+    LocationMessage, TextSendMessage, TemplateSendMessage, CarouselColumn, URIAction, CarouselTemplate, StickerMessage,
+    ImageMessage, VideoMessage, AudioMessage
 )
 
 from dotenv import load_dotenv
@@ -45,6 +46,20 @@ def handle_follow():
 
 @webhook_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    resp = forward_to_botnoi(data_as_str=request.get_data(
+        as_text=True), request_headers=request.headers)
+    return resp.content
+
+
+@webhook_handler.add(MessageEvent, message=StickerMessage)
+def handle_sticker_message(event):
+    resp = forward_to_botnoi(data_as_str=request.get_data(
+        as_text=True), request_headers=request.headers)
+    return resp.content
+
+
+@webhook_handler.add(MessageEvent, message=ImageMessage)
+def handle_image_message(event):
     resp = forward_to_botnoi(data_as_str=request.get_data(
         as_text=True), request_headers=request.headers)
     return resp.content
