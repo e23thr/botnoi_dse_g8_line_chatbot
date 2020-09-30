@@ -1,17 +1,15 @@
 {% extends "base.html" %} {% block head %}
 <title>Personal Supplement</title>
 <script type="application/javascript">
-  window.addEventListener("liffLoggedIn", async function () {
-    // let profile = await liff.getProfile();
-    alert(userProfile.displayName);
+  window.addEventListener("custom_liffLoggedIn", async function () {
     document.querySelector("h1.title.hello").innerHTML = `
     สวัสดีค่ะ ${userProfile.displayName}
     `;
   });
 </script>
-{% endblock head %} {% block content %}
-
-<h1 class="title hello">สวัสดีค่ะ พี่</h1>
+{% endblock head %} {% block heroheader %}
+<h2 class="subtitle hello is-block has-text-centered">สวัสดีค่ะ พี่</h1>
+{% endblock heroheader %} {% block content %}
 
 <div class="container q q-0">
   <div class="card">
