@@ -16,7 +16,11 @@
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script
+      charset="utf-8"
+      src="https://static.line-scdn.net/liff/edge/2/sdk.js"
+    ></script>
+    <script src="https//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <style type="text/css">
       html,
       body {
@@ -28,6 +32,20 @@
       const apiPrefix = "/api/";
       var isLoggedIn = false;
       var userProfile = null;
+      alert("Loaded");
+      liff
+        .init({ liffId: liffId })
+        .then(() => {
+          alert("initialized");
+          isLoggedIn = liff.isLoggedIn();
+          if (!isLoggedIn) {
+            liff.closeWindow();
+          }
+        })
+        .catch((e) => {
+          alert("Error");
+          liff.closeWindow();
+        });
     </script>
     {% block head %} {% endblock head %}
   </head>
@@ -38,22 +56,4 @@
       </div>
     </section>
   </body>
-  <script type="application/javascript">
-    if (!liff.isInClient()) {
-      window.close();
-    }
-    window.addEventListener("load", function () {
-      liff
-        .init({ liffId })
-        .then(() => {
-          isLoggedIn = liff.isLoggedIn();
-          if (!isLoggedIn) {
-            liff.closeWindow();
-          }
-        })
-        .catch((e) => {
-          liff.closeWindow();
-        });
-    });
-  </script>
 </html>
