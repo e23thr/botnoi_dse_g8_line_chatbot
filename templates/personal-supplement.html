@@ -1,5 +1,19 @@
 {% extends "base.html" %} {% block head %}
 <title>Personal Supplement</title>
+<script type="application/javascript">
+  window.addEventListener("load", async function () {
+    alert("personal load");
+    if (liff.isLoggedIn()) {
+      let profile = await liff.getProfile();
+      alert(profile.displayName);
+      document.querySelector("h1.title.hello").innerHTML = `
+    สวัสดีค่ะ ${profile.displayName}
+    `;
+    } else {
+      alert("NO LOG IN");
+    }
+  });
+</script>
 {% endblock head %} {% block content %}
 
 <h1 class="title hello">สวัสดีค่ะ พี่</h1>
@@ -861,19 +875,4 @@
     enableStep(step - 1);
   }
 </script>
-{% endblock content %} {% block head %}
-<script type="application/javascript">
-  window.addEventListener("load", async function () {
-    alert("getting profile", liff);
-    if (liff.isLoggedIn()) {
-      let profile = await liff.getProfile();
-      alert(profile.displayName);
-      document.querySelector("h1.title.hello").innerHTML = `
-    สวัสดีค่ะ ${profile.displayName}
-    `;
-    } else {
-      alert("NO LOG IN");
-    }
-  });
-</script>
-{% endblock head %}
+{% endblock content %}

@@ -33,13 +33,19 @@
       var isLoggedIn = false;
       var userProfile = null;
       window.addEventListener("load", function () {
+        alert("base load");
         liff
           .init({ liffId: liffId })
           .then(() => {
             isLoggedIn = liff.isLoggedIn();
             if (!isLoggedIn) {
               liff.closeWindow();
+              return null;
             }
+            return liff.getProfile();
+          })
+          .then((profile) => {
+            userProfile = profile;
           })
           .catch((e) => {
             alert("Error" + e.message);
