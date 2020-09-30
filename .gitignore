@@ -130,3 +130,6 @@ dmypy.json
 
 # Google Sheet
 # token.pickle
+node_modules
+!liff-src/build
+.DS_Store

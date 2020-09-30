@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <style type="text/css">
+      html,
+      body {
+        font-family: "Kanit", "sans-serif";
+      }
+    </style>
+    <script type="application/javascript">
+      const liffId = "1654993657-YPd4QJgZ";
+      const apiPrefix = "/api/";
+      var isLoggedIn = false;
+      var userProfile = null;
+    </script>
+    {% block head %} {% endblock head %}
+  </head>
+  <body>
+    <section class="hero is-fullheight has-background-white-ter">
+      <div class="hero-body">
+        <div class="container">{% block content %} {% endblock content %}</div>
+      </div>
+    </section>
+  </body>
+  <script type="application/javascript">
+    if (!liff.isInClient()) {
+      window.close();
+    }
+    window.addEventListener("load", function () {
+      liff
+        .init({ liffId })
+        .then(() => {
+          isLoggedIn = liff.isLoggedIn();
+          if (!isLoggedIn) {
+            liff.closeWindow();
+          }
+        })
+        .catch((e) => {
+          liff.closeWindow();
+        });
+    });
+  </script>
+</html>

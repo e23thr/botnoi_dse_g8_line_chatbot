@@ -1,0 +1,877 @@
+{% extends "base.html" %} {% block head %}
+<title>Personal Supplement</title>
+{% endblock head %} {% block content %}
+
+<h1 class="title hello">สวัสดีค่ะ พี่</h1>
+
+<div class="container q q-0">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">พี่เพศอะไรคะ</div>
+      <div class="control has-text-center">
+        <div>
+          <label class="radio">
+            <input
+              type="radio"
+              name="gender"
+              value="M"
+              onClick="enableNextBtn(0)"
+            />
+            ชาย
+          </label>
+        </div>
+        <div>
+          <label class="radio">
+            <input
+              type="radio"
+              name="gender"
+              value="F"
+              onClick="enableNextBtn(0)"
+            />
+            หญิง
+          </label>
+        </div>
+        <div>
+          <label class="radio">
+            <input
+              type="radio"
+              name="gender"
+              value="O"
+              onClick="enableNextBtn(0)"
+            />
+            อื่นๆ
+          </label>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="" class="card-footer-item is-invisible">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-1">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">ขอทราบอายุหน่อยค่ะ</div>
+      <div class="field">
+        <p class="control has-icons-right">
+          <input
+            class="input"
+            type="number"
+            min="18"
+            max="80"
+            name="age"
+            onkeyup="if (parseInt(this.value,10)>=18 && parseInt(this.value,10)<=80){enableNextBtn(1);} else {disableNextBtn(1)}"
+          />
+          <span class="icon is-small is-right is-primary is-invisible">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-2">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">พี่ทานอาหารเสริมบ้างไหมคะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="useSupplement"
+                value="NO"
+                onClick="enableNextBtn(2)"
+              />
+              ไม่ได้ทานเลย
+            </label>
+          </div>
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="useSupplement"
+                value="SOMETIMES"
+                onClick="enableNextBtn(2)"
+              />
+              ทานบ้าง
+            </label>
+          </div>
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="useSupplement"
+                value="ALOT"
+                onClick="enableNextBtn(2)"
+              />
+              ทานเยอะอยู่แล้ว
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-3">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">สัปดาห์หนึ่งพี่ออกกำลังกายบ่อยแค่ไหนคะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="excercise"
+                value="0"
+                onClick="enableNextBtn(3)"
+              />
+              แทบจะไม่ได้ออกเลย
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="excercise"
+                value="1"
+                onClick="enableNextBtn(3)"
+              />
+              1-2 ครั้ง/สัปดาห์
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="excercise"
+                value="3"
+                onClick="enableNextBtn(3)"
+              />
+              3-4 ครั้ง/สัปดาห์
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="excercise"
+                value="5"
+                onClick="enableNextBtn(3)"
+              />
+              5 ครั้งขึ้นไป
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-4">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">โซนที่พักอาศัยของพี่เป็นแบบไหนคะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="zone"
+                value="0"
+                onClick="enableNextBtn(4)"
+              />
+              อยู่ในเมือง
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="zone"
+                value="1"
+                onClick="enableNextBtn(4)"
+              />
+              ชานเมือง
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="zone"
+                value="2"
+                onClick="enableNextBtn(4)"
+              />
+              ชนบท
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-5">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">โซนที่พักอาศัยของพี่เป็นแบบไหนคะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="sun"
+                value="1"
+                onClick="enableNextBtn(5)"
+              />
+              น้อยกว่า 20 นาที
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="sun"
+                value="2"
+                onClick="enableNextBtn(5)"
+              />
+              มากกว่า 20 นาที
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a
+        href="#"
+        onclick="if (document.querySelector('input[name=sun]:checked').value == 2) {nextStep()} else {
+      disableStep(5);
+      enableStep(7);
+    }"
+        class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-6">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">ได้ทาครีมกันแดดไหมคะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="sunscreen"
+                value="1"
+                onClick="enableNextBtn(6)"
+              />
+              ทาจ้า
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="sunscreen"
+                value="0"
+                onClick="enableNextBtn(6)"
+              />
+              ไม่ได้ทาเลย
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a
+        href="#"
+        onclick="if (document.querySelector('input[name=sun]:checked').value == 2) {nextStep()} else {
+      disableStep(5);
+      enableStep(7);
+    }"
+        class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-7">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">พี่สูบบุหรี่ไหมคะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="cigarette"
+                value="1"
+                onClick="enableNextBtn(7)"
+              />
+              สูบ
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="cigarette"
+                value="0"
+                onClick="enableNextBtn(7)"
+              />
+              ไม่สูบ
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a
+        href="#"
+        onclick="if (document.querySelector('input[name=sun]:checked').value == 2) {prevStep()} else {disableStep(7); enableStep(5);}"
+        class="card-footer-item"
+        >ก่อนหน้า</a
+      >
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-8">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">พี่ดื่มเหล้าไหมคะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="alcohol"
+                value="0"
+                onClick="enableNextBtn(8)"
+              />
+              บอยไม่ดื่มค่าาา
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="alcohol"
+                value="1"
+                onClick="enableNextBtn(8)"
+              />
+              1-6 แก้ว/สัปดาห์
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="alcohol"
+                value="6"
+                onClick="enableNextBtn(8)"
+              />
+              เกิน 6 แก้ว/สัปดาห์
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-9">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">ทานพักผลไม้ปริมาณเท่าไหร่ต่อวันคะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="vegetables"
+                value="0"
+                onClick="enableNextBtn(9)"
+              />
+              ไม่ได้ทานเลยอ่า
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="vegetables"
+                value="1-3"
+                onClick="enableNextBtn(9)"
+              />
+              1-3 กำมือ
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="vegetables"
+                value="4-6"
+                onClick="enableNextBtn(9)"
+              />
+              4-6 กำมือ
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="vegetables"
+                value="7"
+                onClick="enableNextBtn(9)"
+              />
+              7 กำมือขึ้นไป
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-10">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">
+        <div>ทานอาหารที่มีแคลเซียมซักกี่อย่างต่อวันคะ</div>
+        <div>เช่น นม เนย โยเกิร์ต เต้าหู้ ปลาเล็กปลาน้อย</div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="calcium"
+                value="1"
+                onClick="enableNextBtn(10)"
+              />
+              1 อย่าง
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="calcium"
+                value="2"
+                onClick="enableNextBtn(10)"
+              />
+              2 อย่าง
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="calcium"
+                value="3"
+                onClick="enableNextBtn(10)"
+              />
+              3 อย่างขึ้นไป
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-11">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">
+        <div>เลือกประเภทอาหารที่ทานเป็นประจำค่าา~</div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="food_type"
+                value="non-healthy"
+                onClick="enableNextBtn(11)"
+              />
+              ไม่ค่อยกิน healthy
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="food_type"
+                value="5moo"
+                onClick="enableNextBtn(11)"
+              />
+              กินครบ 5 หมู่
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="food_type"
+                value="vegetarian"
+                onClick="enableNextBtn(11)"
+              />
+              วีแกน/เจ/มังสวิรัติ
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="food_type"
+                value="no_milk"
+                onClick="enableNextBtn(11)"
+              />
+              ไม่กินนม
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="food_type"
+                value="keto"
+                onClick="enableNextBtn(11)"
+              />
+              คีโต
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="food_type"
+                value="low_carb"
+                onClick="enableNextBtn(11)"
+              />
+              Low Carb
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-12">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">ปกติทานปลาทะเลกี่ครั้งต่อสัปดาห์คะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="sea_fish"
+                value="0"
+                onClick="enableNextBtn(12)"
+              />
+              ไม่ได้ทานเลยอ่า
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="sea_fish"
+                value="1"
+                onClick="enableNextBtn(12)"
+              />
+              1 ครั้ง
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="sea_fish"
+                value="2"
+                onClick="enableNextBtn(12)"
+              />
+              2 ครั้ง
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="sea_fish"
+                value="3"
+                onClick="enableNextBtn(12)"
+              />
+              มากกว่า 2 ครั้ง
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-13">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">หมอแนะนําให้เสริมธาตุเหล็กมั๊ยคะ</div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="iron"
+                value="Y"
+                onClick="enableNextBtn(13)"
+              />
+              ใช่
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="iron"
+                value="N"
+                onClick="enableNextBtn(13)"
+              />
+              ไม่ใช่
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-13">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">
+        อยากทราบอาหารเสริมเบื้องต้น
+        หรือต้องการข้อมูลอาหารเสริมเฉพาะทางเพิ่มเติมด้วยคะ
+      </div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="need_detail"
+                value="N"
+                onClick="enableNextBtn(13)"
+              />
+              เอาแค่นี้
+            </label>
+          </div>
+
+          <div>
+            <label class="radio">
+              <input
+                type="radio"
+                name="need_detail"
+                value="Y"
+                onClick="enableNextBtn(13)"
+              />
+              ต้องการแบบเฉพาะทางด้วย
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a
+        href="#"
+        onclick="if (document.querySelector('input[name=need_detail:checked').value === 'N') {nextStep()} else {
+        disableStep(13); enableStep(15)
+      }"
+        class="card-footer-item has-text-grey"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<script type="application/javascript">
+  const maxQuestion = document.querySelectorAll(".q").length;
+  let step = 0;
+  let answer = {};
+  // hide all questions except first question
+  // for (i = 1; i < maxQuestion; i++) {
+  //   document.querySelector(".q-" + i).classList.add("is-hidden");
+  // }
+  function enableNextBtn(stepId) {
+    let elm = document.querySelector(
+      ".q-" + stepId + "> .card >footer.card-footer>a:nth-last-child(1)"
+    );
+    elm.classList.remove("has-text-grey");
+    elm.onClick = "nextStep()";
+
+    elm = document.querySelector(".q-" + stepId + " .icon");
+    if (elm) {
+      elm.classList.remove("is-invisible");
+    }
+  }
+  function disableNextBtn(stepId) {
+    let elm = document.querySelector(
+      ".q-" + stepId + "> .card >footer.card-footer>a:nth-last-child(1)"
+    );
+    elm.classList.add("has-text-grey");
+    elm.onClick = "";
+
+    elm = document.querySelector(".q-" + stepId + " .icon");
+    if (elm) {
+      elm.classList.add("is-invisible");
+    }
+  }
+  function disableStep(id) {
+    document.querySelector(".q-" + id).classList.add("is-hidden");
+  }
+  function enableStep(id) {
+    document.querySelector(".q-" + id).classList.remove("is-hidden");
+    step = id;
+  }
+
+  function nextStep() {
+    disableStep(step);
+    enableStep(step + 1);
+  }
+
+  function prevStep() {
+    disableStep(step);
+    enableStep(step - 1);
+  }
+
+  document.addEventListener("load", async function () {
+    alert("getting profile", liff);
+    if (liff.isLoggedIn()) {
+      let profile = await liff.getProfile();
+      alert(profile.displayName);
+      document.querySelector("h1.title.hello").innerHTML = `
+    สวัสดีค่ะ ${profile.displayName}
+    `;
+    } else {
+      alert("NO LOG IN");
+    }
+  });
+</script>
+{% endblock content %}
