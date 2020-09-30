@@ -32,6 +32,7 @@
       const apiPrefix = "/api/";
       var isLoggedIn = false;
       var userProfile = null;
+      var loginEvent = new Event("liffLoggedIn");
       window.addEventListener("load", function () {
         alert("base load");
         liff
@@ -46,6 +47,7 @@
           })
           .then((profile) => {
             userProfile = profile;
+            window.dispatchEvent(loginEvent);
           })
           .catch((e) => {
             alert("Error" + e.message);

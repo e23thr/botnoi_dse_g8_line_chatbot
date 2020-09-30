@@ -1,17 +1,12 @@
 {% extends "base.html" %} {% block head %}
 <title>Personal Supplement</title>
 <script type="application/javascript">
-  window.addEventListener("load", async function () {
-    alert("personal load");
-    if (liff.isLoggedIn()) {
-      let profile = await liff.getProfile();
-      alert(profile.displayName);
-      document.querySelector("h1.title.hello").innerHTML = `
-    สวัสดีค่ะ ${profile.displayName}
+  window.addEventListener("liffLoggedIn", async function () {
+    // let profile = await liff.getProfile();
+    alert(userProfile.displayName);
+    document.querySelector("h1.title.hello").innerHTML = `
+    สวัสดีค่ะ ${userProfile.displayName}
     `;
-    } else {
-      alert("NO LOG IN");
-    }
   });
 </script>
 {% endblock head %} {% block content %}
