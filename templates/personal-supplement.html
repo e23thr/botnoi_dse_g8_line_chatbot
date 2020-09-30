@@ -860,8 +860,10 @@
     disableStep(step);
     enableStep(step - 1);
   }
-
-  document.addEventListener("load", async function () {
+</script>
+{% endblock content %} {% block head %}
+<script type="application/javascript">
+  window.addEventListener("load", async function () {
     alert("getting profile", liff);
     if (liff.isLoggedIn()) {
       let profile = await liff.getProfile();
@@ -874,4 +876,4 @@
     }
   });
 </script>
-{% endblock content %}
+{% endblock head %}

@@ -36,7 +36,6 @@
         liff
           .init({ liffId: liffId })
           .then(() => {
-            alert("initialized");
             isLoggedIn = liff.isLoggedIn();
             if (!isLoggedIn) {
               liff.closeWindow();
