@@ -32,19 +32,21 @@
       const apiPrefix = "/api/";
       var isLoggedIn = false;
       var userProfile = null;
-      liff
-        .init({ liffId: liffId })
-        .then(() => {
-          alert("initialized");
-          isLoggedIn = liff.isLoggedIn();
-          if (!isLoggedIn) {
+      window.addEventListener("load", function () {
+        liff
+          .init({ liffId: liffId })
+          .then(() => {
+            alert("initialized");
+            isLoggedIn = liff.isLoggedIn();
+            if (!isLoggedIn) {
+              liff.closeWindow();
+            }
+          })
+          .catch((e) => {
+            alert("Error" + e.message);
             liff.closeWindow();
-          }
-        })
-        .catch((e) => {
-          alert("Error" + e.message);
-          liff.closeWindow();
-        });
+          });
+      });
     </script>
     {% block head %} {% endblock head %}
   </head>
