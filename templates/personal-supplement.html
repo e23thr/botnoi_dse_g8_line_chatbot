@@ -805,7 +805,7 @@
         disableStep(13); enableStep(15)
       }"
         class="card-footer-item has-text-grey"
-        >ต่อไป</a
+        >รอทำต่อ อย่ากดจ๊ะ</a
       >
     </footer>
   </div>
@@ -816,9 +816,9 @@
   let step = 0;
   let answer = {};
   // hide all questions except first question
-  // for (i = 1; i < maxQuestion; i++) {
-  //   document.querySelector(".q-" + i).classList.add("is-hidden");
-  // }
+  for (i = 1; i < maxQuestion; i++) {
+    document.querySelector(".q-" + i).classList.add("is-hidden");
+  }
   function enableNextBtn(stepId) {
     let elm = document.querySelector(
       ".q-" + stepId + "> .card >footer.card-footer>a:nth-last-child(1)"
