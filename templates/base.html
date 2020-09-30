@@ -32,7 +32,6 @@
       const apiPrefix = "/api/";
       var isLoggedIn = false;
       var userProfile = null;
-      alert("Loaded");
       liff
         .init({ liffId: liffId })
         .then(() => {
@@ -43,7 +42,7 @@
           }
         })
         .catch((e) => {
-          alert("Error");
+          alert("Error" + e.message);
           liff.closeWindow();
         });
     </script>
