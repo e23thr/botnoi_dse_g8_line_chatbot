@@ -17,6 +17,8 @@ from dseg8.line import LinebotApp
 
 from dseg8.gsheets import read_friends, write_friends
 
+from dseg8.utility import BMI_Calculator
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -58,6 +60,22 @@ def static_files(filename):
 #     if 'Expires' not in response.headers:
 #         response.headers['Expires'] = '0'
 #     return response
+
+###BMI API Function
+class get_BMI(Resource):
+    def get(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('weight', type=int)
+        parser.add_argument('height', type=int)
+        dictp = parser.parse_args()
+        return BMI_Calculator(dictp['weight'],dictp['height'])
+
+api.add_resource(get_BMI, '/get_BMI',endpoint='get_BMI')
+
+###
+
+
+
 
 
 if __name__ == "__main__":
