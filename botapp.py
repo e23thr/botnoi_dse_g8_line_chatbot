@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 from flask import Flask, send_from_directory, Response, render_template, abort
 
-from flask_restful import Resource, Api,req, reqparse
+from flask_restful import Resource, Api,reqyest
 
 from flask_cors import CORS
 
@@ -65,13 +65,12 @@ def static_files(filename):
 class get_BMI(Resource):
     def get(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('weight', type=int)
-        parser.add_argument('height', type=int)
-        dictp = parser.parse_args()
+        dictp['weight'] = float(reqyest.args.get("weight"))
+        dictp['height'] = float(reqyest.args.get("height"))
+
         return BMI_Calculator(dictp['weight'],dictp['height'])
 
 api.add_resource(get_BMI, '/get_BMI',endpoint='get_BMI')
-
 ###
 
 
