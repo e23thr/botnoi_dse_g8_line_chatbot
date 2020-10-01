@@ -64,11 +64,10 @@ def static_files(filename):
 ###BMI API Function
 class get_BMI(Resource):
     def get(self):
-        parser = reqparse.RequestParser()
         dictp['weight'] = float(reqyest.args.get("weight"))
         dictp['height'] = float(reqyest.args.get("height"))
-
-        return BMI_Calculator(dictp['weight'],dictp['height'])
+        bmi = BMI_Calculator(dictp['weight'],dictp['height'])
+        return "อันนาคำนวณดูแล้ว BMI ของพี่คือ"+bmi
 
 api.add_resource(get_BMI, '/get_BMI',endpoint='get_BMI')
 ###
