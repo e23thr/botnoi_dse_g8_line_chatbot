@@ -17,7 +17,7 @@ from dseg8.line import LinebotApp
 
 from dseg8.gsheets import read_friends, write_friends
 
-from dseg8.utility import BMI_Calculator
+from dseg8.utility import BMI_Calculator,BMI_Result
 
 load_dotenv()
 
@@ -68,7 +68,12 @@ class get_BMI(Resource):
         dictp['weight'] = float(request.args.get("weight"))
         dictp['height'] = float(request.args.get("height"))
         bmi = BMI_Calculator(dictp['weight'],dictp['height'])
-        return {"bmi":round(bmi *100)/100}
+        bmi_result = BMI_Result(bmi)
+        return {"bmi":round(bmi *100)/100,"bmi_result":bmi_result}
+
+
+
+
 
 api.add_resource(get_BMI, '/get_BMI',endpoint='get_BMI')
 ###
