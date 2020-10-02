@@ -68,7 +68,7 @@ class get_BMI(Resource):
         dictp['weight'] = float(request.args.get("weight"))
         dictp['height'] = float(request.args.get("height"))
         bmi = BMI_Calculator(dictp['weight'],dictp['height'])
-        return {"result":"อันนาคำนวณดูแล้ว BMI ของพี่คือ"+str(bmi)}
+        return {"bmi":bmi}
 
 api.add_resource(get_BMI, '/get_BMI',endpoint='get_BMI')
 ###
