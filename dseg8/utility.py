@@ -9,12 +9,12 @@ def BMI_Calculator(weight, height):
 # Function อ่านผลของ BMI
 def BMI_Result(bmi):
     if bmi < 18.50:
-        return "น้ำหนักน้อย/ผอม"
+        return "ผอมไปหน่อย"
     elif (bmi >= 18.50 and  bmi <23):
-        return "ปกติ(สุขภาพดี)"
+        return "สุขภาพดี"
     elif (bmi >= 23 and  bmi < 25):
-        return "ท้วม/โรคอ้วนระดับ 1"
+        return "ท้วมไปหน่อย"
     elif (bmi >= 25 and  bmi < 30):
-        return "อ้วน/โรคอ้วนระดับ 2"
+        return "อ้วนไปหน่อย"
     elif (bmi >=30):
-        return "อ้วนมาก/โรคอ้วนระดับ 3"
+        return "อ้วนมากๆ"
