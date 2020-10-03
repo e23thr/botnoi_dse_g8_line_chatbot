@@ -133,3 +133,4 @@ dmypy.json
 node_modules
 !liff-src/build
 .DS_Store
+.vscode/*
