@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 from flask import Flask, send_from_directory, Response, render_template, abort
 
-from flask_restful import Resource, Api,request
+from flask_restful import Resource, Api, request
 
 from flask_cors import CORS
 
@@ -17,7 +17,7 @@ from dseg8.line import LinebotApp
 
 from dseg8.gsheets import read_friends, write_friends
 
-from dseg8.utility import BMI_Calculator,BMI_Result
+from dseg8.utility import BMI_Calculator, BMI_Result
 
 load_dotenv()
 
@@ -61,25 +61,21 @@ def static_files(filename):
 #         response.headers['Expires'] = '0'
 #     return response
 
-###BMI API Function
+# BMI API Function
+
+
 class get_BMI(Resource):
     def get(self):
         dictp = {}
         dictp['weight'] = float(request.args.get("weight"))
         dictp['height'] = float(request.args.get("height"))
-        bmi = BMI_Calculator(dictp['weight'],dictp['height'])
+        bmi = BMI_Calculator(dictp['weight'], dictp['height'])
         bmi_result = BMI_Result(bmi)
-        return {"bmi":round(bmi *100)/100,"bmi_result":bmi_result}
+        return {"bmi": round(bmi * 100)/100, "bmi_result": bmi_result}
 
 
-
-
-
-api.add_resource(get_BMI, '/get_BMI',endpoint='get_BMI')
+api.add_resource(get_BMI, '/get_BMI', endpoint='get_BMI')
 ###
-
-
-
 
 
 if __name__ == "__main__":

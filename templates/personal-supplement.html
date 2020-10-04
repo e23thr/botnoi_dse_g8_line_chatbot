@@ -21,7 +21,7 @@
             <input
               type="radio"
               name="gender"
-              value="M"
+              value="ชาย"
               onClick="enableNextBtn(0)"
             />
             ชาย
@@ -32,7 +32,7 @@
             <input
               type="radio"
               name="gender"
-              value="F"
+              value="หญิง"
               onClick="enableNextBtn(0)"
             />
             หญิง
@@ -43,7 +43,7 @@
             <input
               type="radio"
               name="gender"
-              value="O"
+              value="อื่นๆ"
               onClick="enableNextBtn(0)"
             />
             อื่นๆ
@@ -53,7 +53,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="" class="card-footer-item is-invisible">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -82,7 +82,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -100,7 +100,7 @@
               <input
                 type="radio"
                 name="useSupplement"
-                value="NO"
+                value="ไม่ได้ทานเลย"
                 onClick="enableNextBtn(2)"
               />
               ไม่ได้ทานเลย
@@ -111,7 +111,7 @@
               <input
                 type="radio"
                 name="useSupplement"
-                value="SOMETIMES"
+                value="ทานบ้าง"
                 onClick="enableNextBtn(2)"
               />
               ทานบ้าง
@@ -122,7 +122,7 @@
               <input
                 type="radio"
                 name="useSupplement"
-                value="ALOT"
+                value="ทานเยอะอยู่แล้ว"
                 onClick="enableNextBtn(2)"
               />
               ทานเยอะอยู่แล้ว
@@ -133,7 +133,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -151,7 +151,7 @@
               <input
                 type="radio"
                 name="excercise"
-                value="0"
+                value="แทบจะไม่ได้ออกเลย"
                 onClick="enableNextBtn(3)"
               />
               แทบจะไม่ได้ออกเลย
@@ -163,7 +163,7 @@
               <input
                 type="radio"
                 name="excercise"
-                value="1"
+                value="1-2 ครั้ง/สัปดาห์"
                 onClick="enableNextBtn(3)"
               />
               1-2 ครั้ง/สัปดาห์
@@ -175,7 +175,7 @@
               <input
                 type="radio"
                 name="excercise"
-                value="3"
+                value="3-4 ครั้ง/สัปดาห์"
                 onClick="enableNextBtn(3)"
               />
               3-4 ครั้ง/สัปดาห์
@@ -187,7 +187,7 @@
               <input
                 type="radio"
                 name="excercise"
-                value="5"
+                value="5 ครั้งขึ้นไป"
                 onClick="enableNextBtn(3)"
               />
               5 ครั้งขึ้นไป
@@ -198,7 +198,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -216,7 +216,7 @@
               <input
                 type="radio"
                 name="zone"
-                value="0"
+                value="อยู่ในเมือง"
                 onClick="enableNextBtn(4)"
               />
               อยู่ในเมือง
@@ -228,7 +228,7 @@
               <input
                 type="radio"
                 name="zone"
-                value="1"
+                value="ชานเมือง"
                 onClick="enableNextBtn(4)"
               />
               ชานเมือง
@@ -240,7 +240,7 @@
               <input
                 type="radio"
                 name="zone"
-                value="2"
+                value="ชนบท"
                 onClick="enableNextBtn(4)"
               />
               ชนบท
@@ -251,7 +251,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -269,7 +269,7 @@
               <input
                 type="radio"
                 name="sun"
-                value="1"
+                value="น้อยกว่า 20 นาที"
                 onClick="enableNextBtn(5)"
               />
               น้อยกว่า 20 นาที
@@ -281,7 +281,7 @@
               <input
                 type="radio"
                 name="sun"
-                value="2"
+                value="มากกว่า 20 นาที"
                 onClick="enableNextBtn(5)"
               />
               มากกว่า 20 นาที
@@ -294,11 +294,11 @@
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
       <a
         href="#"
-        onclick="if (document.querySelector('input[name=sun]:checked').value == 2) {nextStep()} else {
+        onclick="if (document.querySelector('input[name=sun]:checked').value == 'มากกว่า 20 นาที') {nextStep()} else {
       disableStep(5);
       enableStep(7);
     }"
-        class="card-footer-item has-text-grey"
+        class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -316,10 +316,10 @@
               <input
                 type="radio"
                 name="sunscreen"
-                value="1"
+                value="ทา"
                 onClick="enableNextBtn(6)"
               />
-              ทาจ้า
+              ทา
             </label>
           </div>
 
@@ -328,7 +328,7 @@
               <input
                 type="radio"
                 name="sunscreen"
-                value="0"
+                value="ไม่ได้ทาเลย"
                 onClick="enableNextBtn(6)"
               />
               ไม่ได้ทาเลย
@@ -341,11 +341,8 @@
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
       <a
         href="#"
-        onclick="if (document.querySelector('input[name=sun]:checked').value == 2) {nextStep()} else {
-      disableStep(5);
-      enableStep(7);
-    }"
-        class="card-footer-item has-text-grey"
+        onclick="nextStep()"
+        class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -363,7 +360,7 @@
               <input
                 type="radio"
                 name="cigarette"
-                value="1"
+                value="สูบ"
                 onClick="enableNextBtn(7)"
               />
               สูบ
@@ -375,7 +372,7 @@
               <input
                 type="radio"
                 name="cigarette"
-                value="0"
+                value="ไม่สูบ"
                 onClick="enableNextBtn(7)"
               />
               ไม่สูบ
@@ -387,11 +384,11 @@
     <footer class="card-footer">
       <a
         href="#"
-        onclick="if (document.querySelector('input[name=sun]:checked').value == 2) {prevStep()} else {disableStep(7); enableStep(5);}"
+        onclick="if (document.querySelector('input[name=sun]:checked').value == 'มากกว่า 20 นาที') {prevStep()} else {disableStep(7); enableStep(5);}"
         class="card-footer-item"
         >ก่อนหน้า</a
       >
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -409,10 +406,10 @@
               <input
                 type="radio"
                 name="alcohol"
-                value="0"
+                value="ไม่ดื่ม"
                 onClick="enableNextBtn(8)"
               />
-              บอยไม่ดื่มค่าาา
+              ไม่ดื่ม
             </label>
           </div>
 
@@ -421,7 +418,7 @@
               <input
                 type="radio"
                 name="alcohol"
-                value="1"
+                value="1-6 แก้ว/สัปดาห์"
                 onClick="enableNextBtn(8)"
               />
               1-6 แก้ว/สัปดาห์
@@ -433,7 +430,7 @@
               <input
                 type="radio"
                 name="alcohol"
-                value="6"
+                value="เกิน 6 แก้ว/สัปดาห์"
                 onClick="enableNextBtn(8)"
               />
               เกิน 6 แก้ว/สัปดาห์
@@ -444,7 +441,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -462,10 +459,10 @@
               <input
                 type="radio"
                 name="vegetables"
-                value="0"
+                value="ไม่ได้ทานเลย"
                 onClick="enableNextBtn(9)"
               />
-              ไม่ได้ทานเลยอ่า
+              ไม่ได้ทานเลย
             </label>
           </div>
 
@@ -474,7 +471,7 @@
               <input
                 type="radio"
                 name="vegetables"
-                value="1-3"
+                value="1-3 กำมือ"
                 onClick="enableNextBtn(9)"
               />
               1-3 กำมือ
@@ -486,7 +483,7 @@
               <input
                 type="radio"
                 name="vegetables"
-                value="4-6"
+                value="4-6 กำมือ"
                 onClick="enableNextBtn(9)"
               />
               4-6 กำมือ
@@ -498,7 +495,7 @@
               <input
                 type="radio"
                 name="vegetables"
-                value="7"
+                value="7 กำมือขึ้นไป"
                 onClick="enableNextBtn(9)"
               />
               7 กำมือขึ้นไป
@@ -509,7 +506,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -530,7 +527,7 @@
               <input
                 type="radio"
                 name="calcium"
-                value="1"
+                value="1 อย่าง"
                 onClick="enableNextBtn(10)"
               />
               1 อย่าง
@@ -542,7 +539,7 @@
               <input
                 type="radio"
                 name="calcium"
-                value="2"
+                value="2 อย่าง"
                 onClick="enableNextBtn(10)"
               />
               2 อย่าง
@@ -554,7 +551,7 @@
               <input
                 type="radio"
                 name="calcium"
-                value="3"
+                value="3 อย่างขึ้นไป"
                 onClick="enableNextBtn(10)"
               />
               3 อย่างขึ้นไป
@@ -565,7 +562,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -585,7 +582,7 @@
               <input
                 type="radio"
                 name="food_type"
-                value="non-healthy"
+                value="ไม่ค่อยกิน healthy"
                 onClick="enableNextBtn(11)"
               />
               ไม่ค่อยกิน healthy
@@ -597,7 +594,7 @@
               <input
                 type="radio"
                 name="food_type"
-                value="5moo"
+                value="กินครบ 5 หมู่"
                 onClick="enableNextBtn(11)"
               />
               กินครบ 5 หมู่
@@ -609,7 +606,7 @@
               <input
                 type="radio"
                 name="food_type"
-                value="vegetarian"
+                value="วีแกน/เจ/มังสวิรัติ"
                 onClick="enableNextBtn(11)"
               />
               วีแกน/เจ/มังสวิรัติ
@@ -621,7 +618,7 @@
               <input
                 type="radio"
                 name="food_type"
-                value="no_milk"
+                value="ไม่กินนม"
                 onClick="enableNextBtn(11)"
               />
               ไม่กินนม
@@ -633,7 +630,7 @@
               <input
                 type="radio"
                 name="food_type"
-                value="keto"
+                value="คีโต"
                 onClick="enableNextBtn(11)"
               />
               คีโต
@@ -645,7 +642,7 @@
               <input
                 type="radio"
                 name="food_type"
-                value="low_carb"
+                value="Low Carb"
                 onClick="enableNextBtn(11)"
               />
               Low Carb
@@ -656,7 +653,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -674,10 +671,10 @@
               <input
                 type="radio"
                 name="sea_fish"
-                value="0"
+                value="ไม่ได้ทานเลย"
                 onClick="enableNextBtn(12)"
               />
-              ไม่ได้ทานเลยอ่า
+              ไม่ได้ทานเลย
             </label>
           </div>
 
@@ -686,7 +683,7 @@
               <input
                 type="radio"
                 name="sea_fish"
-                value="1"
+                value="1 ครั้ง"
                 onClick="enableNextBtn(12)"
               />
               1 ครั้ง
@@ -698,7 +695,7 @@
               <input
                 type="radio"
                 name="sea_fish"
-                value="2"
+                value="2 ครั้ง"
                 onClick="enableNextBtn(12)"
               />
               2 ครั้ง
@@ -710,7 +707,7 @@
               <input
                 type="radio"
                 name="sea_fish"
-                value="3"
+                value="มากกว่า 2 ครั้ง"
                 onClick="enableNextBtn(12)"
               />
               มากกว่า 2 ครั้ง
@@ -721,7 +718,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -739,7 +736,7 @@
               <input
                 type="radio"
                 name="iron"
-                value="Y"
+                value="ใช่"
                 onClick="enableNextBtn(13)"
               />
               ใช่
@@ -751,7 +748,7 @@
               <input
                 type="radio"
                 name="iron"
-                value="N"
+                value="ไม่ใช่"
                 onClick="enableNextBtn(13)"
               />
               ไม่ใช่
@@ -762,7 +759,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
-      <a href="#" onclick="nextStep()" class="card-footer-item has-text-grey"
+      <a href="#" onclick="nextStep()" class="card-footer-item is-invisible"
         >ต่อไป</a
       >
     </footer>
@@ -808,11 +805,273 @@
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
       <a
         href="#"
-        onclick="if (document.querySelector('input[name=need_detail:checked').value === 'N') {nextStep()} else {
-        disableStep(14); enableStep(16)
+        onclick="if (document.querySelector('input[name=need_detail]:checked').value === 'Y') {nextStep()} else {
+        generateResult(); disableStep(14); enableStep(16);
       }"
-        class="card-footer-item has-text-grey"
-        >รอทำต่อ อย่ากดจ๊ะ</a
+        class="card-footer-item is-invisible"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+
+
+<div class="container  q q-15">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">
+        อยากดูแลด้านไหนเป็นพิเศษ เลือก 3 ข้อนะคะ
+      </div>
+      <div class="field">
+        <div class="control">
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="กระดูก"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              กระดูก
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ข้อต่อ"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ข้อต่อ
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="สมอง"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              สมอง
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ระบบย่อยอาหาร (ท้องอืดท้องป่อง)"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ระบบย่อยอาหาร/ท้องอืดท้องป่อง
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ระบบย่อยอาหาร (อาหารไม่ย่อย)"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ระบบย่อยอาหาร/อาหารไม่ย่อย
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="พลังงาน (ความสดชื่นกระปรี้กระเปร่า)"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              พลังงาน (ความสดชื่นกระปรี้กระเปร่า)
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ตา"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ตา
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="สมาธิ"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              สมาธิ
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="หัวใจ (หลอดเลือดหัวใจ)"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              หัวใจ (หลอดเลือดหัวใจ)
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ข้อต่อ"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ข้อต่อ
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ภูมิต้านทาน (น้ำมูกไหลเหมือนแพ้ฝุ่น)"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ภูมิต้านทาน/น้ำมูกไหลเหมือนแพ้ฝุ่น
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ข้อต่อ"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ข้อต่อ
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ต่อมลูกหมาก"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ต่อมลูกหมาก
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ข้อต่อ"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ข้อต่อ
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="การนอน"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              การนอน
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ข้อต่อ"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ข้อต่อ
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ความเครียด"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ความเครียด
+            </label>
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input
+                type="checkbox"
+                name="special"
+                value="ดูแลน้ำหนัก"
+                onClick="enableNextBtn(15);countSpecial();"
+              />
+              ดูแลน้ำหนัก
+            </label>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a
+        href="#"
+        onclick="generateResult(); nextStep()"
+        class="card-footer-item is-invisible"
+        >ต่อไป</a
+      >
+    </footer>
+  </div>
+</div>
+
+<div class="container q q-16">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">
+        <h1 class="is-size-3">ข้อมูลของคุณ</h1>
+        <div class="confirm-data"></div>
+      </div>
+
+    </div>
+    <footer class="card-footer">
+      <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
+      <a
+        href="#"
+        onclick="saveData()"
+        class="card-footer-item is-invisible"
+        >ส่งข้อมูล</a
       >
     </footer>
   </div>
@@ -822,16 +1081,19 @@
   const maxQuestion = document.querySelectorAll(".q").length;
   let step = 0;
   let answer = {};
+  let submitData = {};
   // hide all questions except first question
   for (i = 1; i < maxQuestion; i++) {
     document.querySelector(".q-" + i).classList.add("is-hidden");
   }
+  // setInterval(generateResult,1000)
+
   function enableNextBtn(stepId) {
     let elm = document.querySelector(
       ".q-" + stepId + "> .card >footer.card-footer>a:nth-last-child(1)"
     );
-    elm.classList.remove("has-text-grey");
-    elm.onClick = "nextStep()";
+    elm.classList.remove("is-invisible");
+    // elm.onClick = "nextStep()";
 
     elm = document.querySelector(".q-" + stepId + " .icon");
     if (elm) {
@@ -842,8 +1104,8 @@
     let elm = document.querySelector(
       ".q-" + stepId + "> .card >footer.card-footer>a:nth-last-child(1)"
     );
-    elm.classList.add("has-text-grey");
-    elm.onClick = "";
+    elm.classList.add("is-invisible");
+    // elm.onClick = "";
 
     elm = document.querySelector(".q-" + stepId + " .icon");
     if (elm) {
@@ -866,6 +1128,107 @@
   function prevStep() {
     disableStep(step);
     enableStep(step - 1);
+  }
+
+  function generateResult() {
+    const dataFields = [
+      {
+        title: "เพศ",
+        query: "input[name=gender]:checked"
+      },
+      {
+        title: "อายุ",
+        query: "input[name=age]"
+      },
+      {
+        title: "การทานอาหารเสริม",
+        query: "input[name=useSupplement]:checked"
+      },
+      {
+        title: "การออกกำลังกาย/ต่อสัปดาห์",
+        query: "input[name=excercise]:checked"
+      },
+      {
+        title: "โซนที่พักอาศัย",
+        query: "input[name=zone]:checked"
+      },
+      {
+        title: "การตากแดด",
+        query: "input[name=sun]:checked"
+      },
+      {
+        title: "ใช้ครีมกันแดด",
+        query: "input[name=sunscreen]:checked"
+      },
+      {
+        title: "การสูบบุหรี่",
+        query: "input[name=cigarette]:checked"
+      },
+      {
+        title: "การดื่มแอลกอฮอล์",
+        query: "input[name=alcohol]:checked"
+      },
+      {
+        title: "ปริมาณการทานผักผลไม้",
+        query: "input[name=vegetables]:checked"
+      },
+      {
+        title: "ทานอาหารที่มีแคลเซียม",
+        query: "input[name=calcium]:checked"
+      },
+      {
+        title: "ประเภทอาหารที่ทานประจำ",
+        query: "input[name=food_type]:checked"
+      },
+      {
+        title: "จำนวนครั้งที่ทานปลาทะเลต่อสัปดาห์",
+        query: "input[name=sea_fish]:checked"
+      },
+      {
+        title: "คำแนะนำเรื่องการเสริมธาตุเหล็กจากคุณหมอ",
+        query: "input[name=iron]:checked"
+      },
+      {
+        title: "ต้องการข้อมูลแบบเฉพาะทาง",
+        query: "input[name=need_detail]:checked"
+      }
+    ]
+    submitData = {}
+    const dataElement = document.querySelector(".confirm-data")
+    let html = "";
+    for (dataField of dataFields) {
+      const el = document.querySelector(dataField.query)
+      // console.log('querying ', dataField.query, el)
+      html += "<div class='columns'>"
+        html += "<div class='column'>"
+          html += dataField.title
+        html += "</div>"
+        html += "<div class='column'>"
+          html += el ? el.value:"ไม่พบข้อมูล"
+        html += "</div>"
+      html += "</div>"
+
+      submitData[dataField.title] = el ? el.value:"ไม่พบข้อมูล"
+    }
+    submitData['special1'] = "";
+    submitData['special2'] = "";
+    submitData['special3'] = "";
+    const specials = document.querySelectorAll('input[name=special]:checked')
+    if (specials.length > 0) {
+      for (i = 0; i < specials.length; i++) {
+        submitData['special'+(i+1)] = specials[i].value
+      }
+    }
+    console.log(submitData)
+    dataElement.innerHTML = html
+  }
+
+  function countSpecial() {
+    const selectedElements = document.querySelectorAll("input[name=special]:checked")
+    const nonSelectedElements = document.querySelectorAll("input[name=special]:not(:checked)")
+    nonSelectedElements.forEach(function(elm){
+        elm.disabled = selectedElements.length === 3
+      })
   }
 </script>
 {% endblock content %}
