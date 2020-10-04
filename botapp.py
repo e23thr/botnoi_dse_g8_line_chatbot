@@ -21,6 +21,8 @@ from dseg8.utility import BMI_Calculator, BMI_Result
 
 load_dotenv()
 
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "./credentials.json"
+
 app = Flask(__name__)
 api = Api(app)
 
