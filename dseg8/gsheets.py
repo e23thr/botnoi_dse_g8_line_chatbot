@@ -8,14 +8,14 @@ from google.auth.transport.requests import Request
 
 load_dotenv()
 
-# for test
-#  https://docs.google.com/spreadsheets/d/1rjNddk8756QW0Rl3mARTCDXzagSWQ3SDjV1iSIPtFg0/edit#gid=0
-# for live
 # https://docs.google.com/spreadsheets/d/1UfxANlKkNRiF1rh1o6_kY8Z2fGKTsY_8_bust_ETqso/edit?usp=sharing
 
-# __googlesheet = None
-
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "./credentials.json"
+
+SHEET_FRIENDS = "friends"
+SHEET_PERSONAL_SUPPLEMENTS = "personal_supplement"
+SHEET_FORM_RESPONSE = "FormResponse"
+SHEET_TEST = "test_sheet"
 
 
 class GoogleSheet():
@@ -24,19 +24,17 @@ class GoogleSheet():
     # __GMAP_KEY = os.getenv("GMAP_KEY")
     __FRIENDS_RANGE = 'friends'
 
-    def __init__(self):
+    def __init__(self, sheet_name=""):
         service = build('sheets', 'v4', developerKey=os.getenv('GMAP_ID'))
         self.__GOOGLESHEET = service.spreadsheets()
-
-    def read_friends(self):
+        self.__FRIENDS_RANGE = sheet_name
         result = self.__GOOGLESHEET.values().get(
             spreadsheetId=self.__GSHEET_ID, range=self.__FRIENDS_RANGE).execute()
         data = result.get('values', [])
-        self.friends_pd = pd.DataFrame(data[1:], columns=data[0])
-        return self.friends_pd
+        self.df = pd.DataFrame(data[1:], columns=data[0])
 
-    def write_friends(self):
-        friends_list = self.friends_pd.T.reset_index().values.T.tolist()
+    def save(self):
+        friends_list = self.df.T.reset_index().values.T.tolist()
         print(friends_list)
         self.__GOOGLESHEET.values().update(
             spreadsheetId=self.__GSHEET_ID,
