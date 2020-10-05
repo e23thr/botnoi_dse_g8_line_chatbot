@@ -19,6 +19,8 @@ from dseg8.gsheets import read_friends, write_friends
 
 from dseg8.utility import BMI_Calculator, BMI_Result
 
+from dseg8.personal_sup_ans import Get_Personal_sup_ans
+
 load_dotenv()
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "./credentials.json"
