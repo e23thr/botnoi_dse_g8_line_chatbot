@@ -3,6 +3,13 @@ from flask_restful import Resource
 from flask import request
 from dseg8.gsheets import GoogleSheet, SHEET_PERSONAL_SUPPLEMENTS
 
+class TestApi(Resource):
+    def get(self):
+        print("request.args")
+        print(request.args)
+        print("request.headers")
+        print(request.headers)
+        return {"args": request.args}
 
 class PersonalSupplement(Resource):
     def post(self):
