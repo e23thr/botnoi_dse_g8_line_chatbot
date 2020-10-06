@@ -4,9 +4,69 @@ import json
 from math import sin, cos, sqrt, atan2, radians
 from dotenv import load_dotenv
 
+from flask_restful import Resource
+from flask import request
+from dseg8.gsheets import GoogleSheet, SHEET_PERSONAL_SUPPLEMENTS
+
+from linebot.models import (
+    MessageEvent, TextMessage, FollowEvent, UnfollowEvent,
+    LocationMessage, TextSendMessage, TemplateSendMessage,
+    CarouselColumn, URIAction, CarouselTemplate, StickerMessage,
+    ImageMessage
+)
+
 load_dotenv()
 
 GMAP_KEY = os.getenv("GMAP_KEY")
+
+
+class LocationSearch(Resource):
+    def get(self):
+        lineId = request.args.get("customer_id")
+        lat = float(request.args.get("p_latitude"))
+        lon = float(request.args.get("p_longitude"))
+        address = request.args.get("p_address")
+        shops_list = gmap_pipeline(lat, lon)
+        template_message = {}
+        columns = []
+        if (len(shops_list) > 0):
+            for shop in shops_list:
+                # 13.7182753,100.4630027
+                actions = []
+                actions.append(URIAction(
+                    label="แผนที่", uri="https://www.google.com/maps/search/?api=1&query={},{}".format(shop['lat'], shop['lon'])))
+
+                if (shop['phone'] != ''):
+                    actions.append(URIAction(label="T:{}".format(shop['phone']), uri="tel:{}".format(
+                        shop['phone'].replace(" ", ""))[:20]))
+                else:
+                    actions.append(URIAction(label="No phone", uri="tel:000"))
+
+                column = CarouselColumn(
+                    thumbnail_image_url=shop['photo_url'],
+                    title="[{:.1f}กม.] {}".format(
+                        shop['distance'], shop['shop_name'])[:40],
+                    text="ที่อยู่: {}".format(shop['address'])[:60],
+                    actions=actions
+                )
+                # print(column)
+                columns.append(column)
+                # print(len(columns))
+
+            template_message = TemplateSendMessage(
+                alt_text="ร้านขายยา",
+                template=CarouselTemplate(
+                    columns=columns
+                )
+            )
+
+        else:
+            template_message=TemplateSendMessage(alt_text="ไม่พบร้านขายยาเลยค่ะ", template=TextSendMessage("ไม่พบร้านขายยาใกล้ๆ เลยค่ะ"))
+        template_message=TemplateSendMessage(alt_text="ไม่พบร้านขายยาเลยค่ะ", template=TextSendMessage("ไม่พบร้านขายยาใกล้ๆ เลยค่ะ"))
+
+        print("template_message")
+        print(template_message)
+        return {"line_payload":json.loads("{}".format(template_message))}, 200, {"reply-by-object": "true"}
 
 
 def find_nearby(lat, lon):

@@ -18,6 +18,7 @@ from dseg8.line import LinebotApp
 from dseg8.utility import BMI_Calculator, BMI_Result
 
 from dseg8.personal_supplement import PersonalSupplement #, TestApi
+from dseg8.gmap import LocationSearch
 from dseg8.personal_sup_ans import Get_Personal_sup_ans
 
 load_dotenv()
@@ -81,6 +82,7 @@ api.add_resource(get_BMI, '/get_BMI', endpoint='get_BMI')
 ###
 
 api.add_resource(PersonalSupplement, '/api/personal-supplement')
+api.add_resource(LocationSearch, '/api/location')
 # api.add_resource(TestApi, '/api/test')
 
 if __name__ == "__main__":
