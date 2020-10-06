@@ -23,8 +23,8 @@ GMAP_KEY = os.getenv("GMAP_KEY")
 class LocationSearch(Resource):
     def get(self):
         lineId = request.args.get("customer_id")
-        lat = float(request.args.get("p_latitude"))
-        lon = float(request.args.get("p_longitude"))
+        lat = request.args.get("p_latitude")
+        lon = request.args.get("p_longitude")
         address = request.args.get("p_address")
         shops_list = gmap_pipeline(lat, lon)
         template_message = {}
