@@ -1218,7 +1218,16 @@
       for (i = 0; i < specials.length; i++) {
         submitData['special'+(i+1)] = specials[i].value
       }
+      html += "<div class='columns'>"
+        html += "<div class='column'>"
+          html += "ข้อมูลเฉพาะทาง"
+        html += "</div>"
+        html += "<div class='column'>"
+          html += [submitData['special1'], submitData['special2'], submitData['special3']].filter(s=>s!=='').join(", ")
+        html += "</div>"
+      html += "</div>"
     }
+
     console.log(submitData)
     dataElement.innerHTML = html
   }
@@ -1229,6 +1238,9 @@
     nonSelectedElements.forEach(function(elm){
         elm.disabled = selectedElements.length === 3
       })
+    if (selectedElements.length === 0) {
+      disableNextBtn(15)
+    }
   }
 </script>
 {% endblock content %}

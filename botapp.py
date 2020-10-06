@@ -15,9 +15,9 @@ from flask_cors import CORS
 
 from dseg8.line import LinebotApp
 
-from dseg8.gsheets import read_friends, write_friends
-
 from dseg8.utility import BMI_Calculator, BMI_Result
+
+from dseg8.personal_supplement import PersonalSupplement
 
 load_dotenv()
 
@@ -79,6 +79,7 @@ class get_BMI(Resource):
 api.add_resource(get_BMI, '/get_BMI', endpoint='get_BMI')
 ###
 
+api.add_resource(PersonalSupplement, '/api/personal-supplement')
 
 if __name__ == "__main__":
     app.run(threaded=False)
