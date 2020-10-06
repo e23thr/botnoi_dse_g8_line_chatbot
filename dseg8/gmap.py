@@ -25,7 +25,8 @@ class LocationSearch(Resource):
         lineId = request.args.get("customer_id")
         lat = request.args.get("p_latitude")
         lon = request.args.get("p_longitude")
-        address = request.args.get("p_address")
+        print('lat {}, lon {}'.format(lat,lon))
+        # address = request.args.get("p_address")
         shops_list = gmap_pipeline(lat, lon)
         template_message = {}
         columns = []
