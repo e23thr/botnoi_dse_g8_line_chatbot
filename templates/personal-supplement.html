@@ -1228,7 +1228,21 @@
       html += "</div>"
     }
 
+    submitData['lineId'] = userProfile.userId
+
     console.log(submitData)
+    axios.post("/api/personal-supplement",submitData)
+      .then(function() {
+        return liff.sendMessages([
+          {
+            type: "text",
+            text: "ดูผลการแนะนำสารอาหารหน่อย"
+          }
+        ])
+      })
+      .then(function(){
+        liff.closeWindow()
+      })
     dataElement.innerHTML = html
   }
 
