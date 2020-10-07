@@ -10,17 +10,19 @@ ps = GoogleSheet(SHEET_PERSONAL_SUPPLEMENTS).df
 
 def Get_Personal_sup_ans(ans_data):
 
-    print(ans_data.iloc[0]['ใช้ครีมกันแดด'])
+    print(ans_data["การตากแดด"])
     ## MapAge
     if(int(ans_data["อายุ"])>=40 and ans_data.iloc[0]['เพศ']=="ชาย"):
         map_age=["วิตามินบีรวม","โสมทะเลทราย"]
     elif(int(ans_data["อายุ"])>=40 and ans_data.iloc[0]['เพศ']=="หญิง"):
         map_age=[]    
     ## Suncream
-    # if(ans_data["การตากแดด"]=="มากกว่า 20 นาที" and ans_data.iloc[0]['ใช้ครีมกันแดด']=="ไม่ได้ทาเลย"):
-    #     map_sunCream=["วิตามินบีรวม","โสมทะเลทราย"]
-    # elif(ans_data["การตากแดด"]=="มากกว่า 20 นาที" and (ans_data.iloc[0]['ใช้ครีมกันแดด']=="ไม่ได้ทาเลย" or ans_data["ใช้ครีมกันแดด"]=="ไม่พบข้อมูล" )):
-    #     map_sunCream=[]    
+    if(str(ans_data["การตากแดด"])=="มากกว่า 20 นาที"):
+        if(ans_data.iloc[0]['ใช้ครีมกันแดด']=="ไม่ได้ทาเลย"):
+           map_sunCream=["วิตามินบีรวม","โสมทะเลทราย"]
+        elif(ans_data.iloc[0]['ใช้ครีมกันแดด']=="ไม่ได้ทาเลย" or ans_data["ใช้ครีมกันแดด"]=="ไม่พบข้อมูล"):
+           map_sunCream=[]    
+    
 
 
     answer_list = list(set(
