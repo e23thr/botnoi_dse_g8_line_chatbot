@@ -69,8 +69,8 @@ class LocationSearch(Resource):
 
         print("template_message")
         print(template_message)
-        responseData = {"line_payload": json.loads(
-            "{}".format(template_message))}
+        responseData = {"line_payload": [json.loads(
+            "{}".format(template_message))]}
         print(responseData)
         return responseData, 200, {"reply-by-object": "true"}
 
