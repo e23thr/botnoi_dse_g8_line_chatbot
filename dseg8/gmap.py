@@ -64,12 +64,14 @@ class LocationSearch(Resource):
         else:
             template_message = TemplateSendMessage(
                 alt_text="ไม่พบร้านขายยาเลยค่ะ", template=TextSendMessage("ไม่พบร้านขายยาใกล้ๆ เลยค่ะ"))
-        template_message = TemplateSendMessage(
-            alt_text="ไม่พบร้านขายยาเลยค่ะ", template=TextSendMessage("ไม่พบร้านขายยาใกล้ๆ เลยค่ะ"))
+        # template_message = TemplateSendMessage(
+        #     alt_text="ไม่พบร้านขายยาเลยค่ะ", template=TextSendMessage("ไม่พบร้านขายยาใกล้ๆ เลยค่ะ"))
 
         print("template_message")
         print(template_message)
-        return {"line_payload": json.loads("{}".format(template_message))}, 200, {"reply-by-object": "true"}
+        responseData = {"line_payload": json.loads(
+            "{}".format(template_message))}
+        return responseData, 200, {"reply-by-object": "true"}
 
 
 def find_nearby(lat, lon):
