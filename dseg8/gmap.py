@@ -23,9 +23,9 @@ GMAP_KEY = os.getenv("GMAP_KEY")
 class LocationSearch(Resource):
     def get(self):
         lineId = request.args.get("customer_id")
-        lat = request.args.get("p_latitude")
-        lon = request.args.get("p_longitude")
-        print('lat {}, lon {}'.format(lat,lon))
+        lat = float(request.args.get("p_latitude"))
+        lon = float(request.args.get("p_longitude"))
+        print('lat {}, lon {}'.format(lat, lon))
         # address = request.args.get("p_address")
         shops_list = gmap_pipeline(lat, lon)
         template_message = {}
@@ -62,12 +62,14 @@ class LocationSearch(Resource):
             )
 
         else:
-            template_message=TemplateSendMessage(alt_text="ไม่พบร้านขายยาเลยค่ะ", template=TextSendMessage("ไม่พบร้านขายยาใกล้ๆ เลยค่ะ"))
-        template_message=TemplateSendMessage(alt_text="ไม่พบร้านขายยาเลยค่ะ", template=TextSendMessage("ไม่พบร้านขายยาใกล้ๆ เลยค่ะ"))
+            template_message = TemplateSendMessage(
+                alt_text="ไม่พบร้านขายยาเลยค่ะ", template=TextSendMessage("ไม่พบร้านขายยาใกล้ๆ เลยค่ะ"))
+        template_message = TemplateSendMessage(
+            alt_text="ไม่พบร้านขายยาเลยค่ะ", template=TextSendMessage("ไม่พบร้านขายยาใกล้ๆ เลยค่ะ"))
 
         print("template_message")
         print(template_message)
-        return {"line_payload":json.loads("{}".format(template_message))}, 200, {"reply-by-object": "true"}
+        return {"line_payload": json.loads("{}".format(template_message))}, 200, {"reply-by-object": "true"}
 
 
 def find_nearby(lat, lon):
