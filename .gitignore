@@ -128,6 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# pycharm
+.idea/
+
 # Google Sheet
 # token.pickle
 node_modules
