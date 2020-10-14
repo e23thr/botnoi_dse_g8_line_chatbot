@@ -20,7 +20,7 @@ class PersonalSupplement(Resource):
         ps = GoogleSheet(SHEET_PERSONAL_SUPPLEMENTS)
         # ps.df = ps.df.astype({'อายุ': 'int32'}).dtypes
         # print("data", data)
-        ps.df['อายุ'] = ps.df['อายุ'].astype(str).astype(int)
+        ps.df['อายุ'] = ps.df['อายุ'].astype(int)
         existing_row = ps.df.loc[ps.df.lineId == data['lineId']]
         # print('existing_row', existing_row)
         if len(existing_row) == 0:
