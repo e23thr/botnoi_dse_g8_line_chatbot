@@ -88,7 +88,16 @@ class get_Personal_Sup(Resource):
     def get(self):
         dictp = {}
         dictp['lineID'] = str(request.args.get("customer_id")) # change from lineID
-        return {"answerlist": Get_Personal_sup_ans(dictp['lineID'])}
+        result = Get_Personal_sup_ans(dictp['lineID'])
+        return {
+            "line_payload": [
+                {
+                    "type": "text",
+                    "text": result.join(",")
+                }
+            ]
+        }, 200, {"reply-by-object": "true"}
+        # return {"answerlist": Get_Personal_sup_ans(dictp['lineID'])}
 
 api.add_resource(get_Personal_Sup, '/get_Personal_Sup', endpoint='get_Personal_Sup')
 ## api get personal sup
