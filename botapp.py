@@ -87,7 +87,7 @@ api.add_resource(LocationSearch, '/api/location')
 class get_Personal_Sup(Resource):
     def get(self):
         dictp = {}
-        dictp['lineID'] = str(request.args.get("lineID"))
+        dictp['lineID'] = str(request.args.get("customer_id")) # change from lineID
         return {"answerlist": Get_Personal_sup_ans(dictp['lineID'])}
 
 api.add_resource(get_Personal_Sup, '/get_Personal_Sup', endpoint='get_Personal_Sup')
