@@ -18,8 +18,9 @@ class PersonalSupplement(Resource):
         data = json.loads(request.get_data(as_text=True))
         data["อายุ"] = int(data["อายุ"])
         ps = GoogleSheet(SHEET_PERSONAL_SUPPLEMENTS)
-        ps.df = ps.df.astype({'อายุ': 'int32'}).dtypes
+        # ps.df = ps.df.astype({'อายุ': 'int32'}).dtypes
         # print("data", data)
+        ps.df['อายุ'] = ps.df['อายุ'].astype(str).astype(int)
         existing_row = ps.df.loc[ps.df.lineId == data['lineId']]
         # print('existing_row', existing_row)
         if len(existing_row) == 0:
