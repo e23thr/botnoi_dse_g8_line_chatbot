@@ -1,30 +1,31 @@
 import json
+import pandas as pd
 from dseg8.gsheets import GoogleSheet, SHEET_PERSONAL_SUPPLEMENTS
 
 
-ans_file = open('personal_sup_q.json', 'rb')
-_answer = json.load(ans_file)
-
-ps = GoogleSheet(SHEET_PERSONAL_SUPPLEMENTS).df
 
 
-def Get_Personal_sup_ans(ans_data):
 
-    print(ans_data["การตากแดด"])
+def Get_Personal_sup_ans(lineID):
+
+    ans_file = open('personal_sup_q.json', 'rb')
+    _answer = json.load(ans_file)
+    ans_data = GoogleSheet(SHEET_PERSONAL_SUPPLEMENTS).df.reset_index()
+  
     ## MapAge
-    if(int(ans_data["อายุ"])>=40 and ans_data.iloc[0]['เพศ']=="ชาย"):
+    if(int(ans_data.iloc[0]["อายุ"])>=40 and ans_data.iloc[0]['เพศ']=="ชาย"):
         map_age=["วิตามินบีรวม","โสมทะเลทราย"]
-    elif(int(ans_data["อายุ"])>=40 and ans_data.iloc[0]['เพศ']=="หญิง"):
+    elif(int(ans_data.iloc[0]["อายุ"])>=40 and ans_data.iloc[0]['เพศ']=="หญิง"):
         map_age=[]    
     ## Suncream
-    if(str(ans_data["การตากแดด"])=="มากกว่า 20 นาที"):
+    if(str(ans_data.iloc[0]["การตากแดด"])=="มากกว่า 20 นาที"):
         if(ans_data.iloc[0]['ใช้ครีมกันแดด']=="ไม่ได้ทาเลย"):
            map_sunCream=["วิตามินบีรวม","โสมทะเลทราย"]
-        elif(ans_data.iloc[0]['ใช้ครีมกันแดด']=="ไม่ได้ทาเลย" or ans_data["ใช้ครีมกันแดด"]=="ไม่พบข้อมูล"):
+        elif(ans_data.iloc[0]['ใช้ครีมกันแดด']=="ไม่ได้ทาเลย" or ans_data.iloc[0]["ใช้ครีมกันแดด"]=="ไม่พบข้อมูล"):
            map_sunCream=[]    
     
 
-
+    #Map Ans
     answer_list = list(set(
         map_age+
         _answer["การออกกำลังกาย/ต่อสัปดาห์"][ans_data.iloc[0]["การออกกำลังกาย/ต่อสัปดาห์"]]+
@@ -42,4 +43,4 @@ def Get_Personal_sup_ans(ans_data):
     
     return answer_list
 
-print(Get_Personal_sup_ans(ps))
+# print(Get_Personal_sup_ans("U90eedeb88d0c990cfa053c9c19a6d97cU90eedeb88d0c990cfa053c9c19a6d97c"))

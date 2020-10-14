@@ -84,6 +84,15 @@ api.add_resource(get_BMI, '/get_BMI', endpoint='get_BMI')
 api.add_resource(PersonalSupplement, '/api/personal-supplement')
 api.add_resource(LocationSearch, '/api/location')
 # api.add_resource(TestApi, '/api/test')
+class get_Personal_Sup(Resource):
+    def get(self):
+        dictp = {}
+        dictp['lineID'] = str(request.args.get("lineID"))
+        return {"answerlist": Get_Personal_sup_ans(dictp['lineID'])}
 
+api.add_resource(get_Personal_Sup, '/get_Personal_Sup', endpoint='get_Personal_Sup')
+## api get personal sup
+
+###
 if __name__ == "__main__":
     app.run(threaded=False)
