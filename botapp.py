@@ -17,7 +17,7 @@ from dseg8.line import LinebotApp
 
 from dseg8.utility import BMI_Calculator, BMI_Result
 
-from dseg8.personal_supplement import PersonalSupplement #, TestApi
+from dseg8.personal_supplement import PersonalSupplement  # , TestApi
 from dseg8.gmap import LocationSearch
 from dseg8.personal_sup_ans import Get_Personal_sup_ans
 
@@ -84,23 +84,28 @@ api.add_resource(get_BMI, '/get_BMI', endpoint='get_BMI')
 api.add_resource(PersonalSupplement, '/api/personal-supplement')
 api.add_resource(LocationSearch, '/api/location')
 # api.add_resource(TestApi, '/api/test')
+
+
 class get_Personal_Sup(Resource):
     def get(self):
         dictp = {}
-        dictp['lineID'] = str(request.args.get("customer_id")) # change from lineID
+        dictp['lineID'] = str(request.args.get(
+            "customer_id"))  # change from lineID
         result = Get_Personal_sup_ans(dictp['lineID'])
         return {
             "line_payload": [
                 {
                     "type": "text",
-                    "text": result.join(",")
+                    "text": ", ".join(result)
                 }
             ]
         }, 200, {"reply-by-object": "true"}
         # return {"answerlist": Get_Personal_sup_ans(dictp['lineID'])}
 
-api.add_resource(get_Personal_Sup, '/get_Personal_Sup', endpoint='get_Personal_Sup')
-## api get personal sup
+
+api.add_resource(get_Personal_Sup, '/get_Personal_Sup',
+                 endpoint='get_Personal_Sup')
+# api get personal sup
 
 ###
 if __name__ == "__main__":

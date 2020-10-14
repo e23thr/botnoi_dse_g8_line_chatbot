@@ -1218,6 +1218,11 @@
       for (i = 0; i < specials.length; i++) {
         submitData['special'+(i+1)] = specials[i].value
       }
+      for (i = 0; i < 3; i++) {
+        if (!submitData['special'+(i+1)]) {
+          submitData['special'+(i+1)] = "NAN"
+        }
+      }
       html += "<div class='columns'>"
         html += "<div class='column'>"
           html += "ข้อมูลเฉพาะทาง"

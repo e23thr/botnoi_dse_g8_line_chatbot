@@ -30,6 +30,7 @@ class GoogleSheet():
         self.__FRIENDS_RANGE = sheet_name
         result = self.__GOOGLESHEET.values().get(
             spreadsheetId=self.__GSHEET_ID, range=self.__FRIENDS_RANGE).execute()
+        # print(result)
         data = result.get('values', [])
         self.df = pd.DataFrame(data[1:], columns=data[0])
 
