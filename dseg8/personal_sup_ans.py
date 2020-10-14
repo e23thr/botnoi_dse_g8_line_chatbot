@@ -13,7 +13,8 @@ def Get_Personal_sup_ans(lineID):
     ps = GoogleSheet(SHEET_PERSONAL_SUPPLEMENTS)
     ps.df.fillna("")
     ans_data = ps.df.loc[ps.df.lineId == lineID]
-
+    # print(ans_data)
+    ans_data = ps.df.loc[ans_data]
     if len(ans_data) == 0:
         raise Exception("Cannot find lineID {}".format(lineId))
     ## MapAge
