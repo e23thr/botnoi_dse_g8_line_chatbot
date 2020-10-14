@@ -14,6 +14,7 @@ class TestApi(Resource):
 class PersonalSupplement(Resource):
     def post(self):
         data = json.loads(request.get_data(as_text=True))
+        data["อายุ"] = int(data["อายุ"])
         ps = GoogleSheet(SHEET_PERSONAL_SUPPLEMENTS)
         # print("data", data)
         existing_row = ps.df.loc[ps.df.lineId == data['lineId']]
