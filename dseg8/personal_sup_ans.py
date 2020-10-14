@@ -11,6 +11,7 @@ def Get_Personal_sup_ans(lineID):
     ans_file = open('personal_sup_q.json', 'rb')
     _answer = json.load(ans_file)
     ps = GoogleSheet(SHEET_PERSONAL_SUPPLEMENTS)
+    ps.df.fillna("")
     ans_data = ps.df.loc[ps.df.lineId == lineID]
 
     if len(ans_data) == 0:
