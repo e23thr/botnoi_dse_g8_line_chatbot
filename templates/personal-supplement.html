@@ -1176,7 +1176,11 @@
 
     submitData['lineId'] = userProfile.userId
 
-    console.log(submitData)
+<!--    console.log(submitData)-->
+    dataElement.innerHTML = html
+  }
+
+  function submitData() {
     axios.post("/api/personal-supplement",submitData)
       .then(function() {
         return liff.sendMessages([
@@ -1189,7 +1193,6 @@
       .then(function(){
         liff.closeWindow()
       })
-    dataElement.innerHTML = html
   }
 
   function countSpecial() {
