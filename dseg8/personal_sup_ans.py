@@ -14,16 +14,18 @@ def Get_Personal_sup_ans(lineID):
     # ans_data = ps.df.loc[ans_data]
     if len(ans_data) == 0:
         raise Exception("Cannot find lineID {}".format(lineID))
+
     # MapAge
-    if(int(ans_data.iloc[0]["อายุ"]) >= 40 and ans_data.iloc[0]['เพศ'] == "ชาย"):
+    map_age = []
+    if int(ans_data.iloc[0]["อายุ"]) >= 40 and ans_data.iloc[0]['เพศ'] == "ชาย":
         map_age = ["วิตามินบีรวม", "โสมทะเลทราย"]
-    elif(int(ans_data.iloc[0]["อายุ"]) >= 40 and ans_data.iloc[0]['เพศ'] == "หญิง"):
+    elif int(ans_data.iloc[0]["อายุ"]) >= 40 and ans_data.iloc[0]['เพศ'] == "หญิง":
         map_age = []
     # Suncream
-    if(str(ans_data.iloc[0]["การตากแดด"]) == "มากกว่า 20 นาที"):
-        if(ans_data.iloc[0]['ใช้ครีมกันแดด'] == "ไม่ได้ทาเลย"):
+    if str(ans_data.iloc[0]["การตากแดด"]) == "มากกว่า 20 นาที":
+        if ans_data.iloc[0]['ใช้ครีมกันแดด'] == "ไม่ได้ทาเลย":
             map_sunCream = ["วิตามินบีรวม", "โสมทะเลทราย"]
-        elif(ans_data.iloc[0]['ใช้ครีมกันแดด'] == "ไม่ได้ทาเลย" or ans_data.iloc[0]["ใช้ครีมกันแดด"] == "ไม่พบข้อมูล"):
+        elif ans_data.iloc[0]['ใช้ครีมกันแดด'] == "ไม่ได้ทาเลย" or ans_data.iloc[0]["ใช้ครีมกันแดด"] == "ไม่พบข้อมูล":
             map_sunCream = []
 
     # Map Ans
