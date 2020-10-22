@@ -795,7 +795,7 @@
       <a
         href="#"
         onclick="if (document.querySelector('input[name=need_detail]:checked').value === 'Y') {nextStep()} else {
-        generateResult(); disableStep(14); enableStep(16);
+        generateResult(); disableStep(14); enableStep(16); enableNextBtn(16)
       }"
         class="card-footer-item is-invisible"
         >ต่อไป</a
@@ -989,7 +989,7 @@
       <a href="#" onclick="prevStep()" class="card-footer-item">ก่อนหน้า</a>
       <a
         href="#"
-        onclick="generateResult(); nextStep()"
+        onclick="generateResult(); nextStep(); enableNextBtn(16)"
         class="card-footer-item is-invisible"
         >ต่อไป</a
       >
