@@ -96,6 +96,10 @@ class get_Personal_Sup(Resource):
             "line_payload": [
                 {
                     "type": "text",
+                    "text": "อันนาแนะนำอาหารเสริมกลุ่มนี้นะคะ"
+                },
+                {
+                    "type": "text",
                     "text": ", ".join(result)
                 }
             ]

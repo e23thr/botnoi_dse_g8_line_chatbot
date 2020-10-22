@@ -38,17 +38,6 @@
             หญิง
           </label>
         </div>
-        <div>
-          <label class="radio">
-            <input
-              type="radio"
-              name="gender"
-              value="อื่นๆ"
-              onClick="enableNextBtn(0)"
-            />
-            อื่นๆ
-          </label>
-        </div>
       </div>
     </div>
     <footer class="card-footer">
@@ -70,7 +59,7 @@
             class="input"
             type="number"
             min="18"
-            max="80"
+            max="150"
             name="age"
             onkeyup="if (parseInt(this.value,10)>=18 && parseInt(this.value,10)<=80){enableNextBtn(1);} else {disableNextBtn(1)}"
           />
