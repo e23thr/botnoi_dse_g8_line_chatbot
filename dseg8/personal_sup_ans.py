@@ -39,9 +39,9 @@ def Get_Personal_sup_ans(lineID):
         _answer["ประเภทอาหารที่ทานประจำ"][ans_data.iloc[0]["ประเภทอาหารที่ทานประจำ"]] +
         _answer["จำนวนครั้งที่ทานปลาทะเลต่อสัปดาห์"][ans_data.iloc[0]["จำนวนครั้งที่ทานปลาทะเลต่อสัปดาห์"]] +
         _answer["คำแนะนำเรื่องการเสริมธาตุเหล็กจากคุณหมอ"][ans_data.iloc[0]["คำแนะนำเรื่องการเสริมธาตุเหล็กจากคุณหมอ"]] +
-        _answer["อยากดูแลด้านไหนเป็นพิเศษ"][ans_data.iloc[0]["special1"]] +
-        _answer["อยากดูแลด้านไหนเป็นพิเศษ"][ans_data.iloc[0]["special2"]] +
-        _answer["อยากดูแลด้านไหนเป็นพิเศษ"][ans_data.iloc[0]["special3"]]
+        _answer["อยากดูแลด้านไหนเป็นพิเศษ"][ans_data.iloc[0]["special1"] if ans_data.iloc[0]["special1"] != "" else "NAN"] +
+        _answer["อยากดูแลด้านไหนเป็นพิเศษ"][ans_data.iloc[0]["special2"] if ans_data.iloc[0]["special2"] != "" else "NAN"] +
+        _answer["อยากดูแลด้านไหนเป็นพิเศษ"][ans_data.iloc[0]["special3"] if ans_data.iloc[0]["special3"] != "" else "NAN"]
     ))
     print("*** DEBUG ***")
     print(answer_list)
