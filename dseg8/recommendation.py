@@ -26,6 +26,7 @@ answer_array = np.array([
 ])
 
 answer_df = pd.Series(answer_array)
+##Directory##
 pre_train_df = pd.read_csv('pre_train.csv', index_col=[0])
 
 
@@ -65,6 +66,14 @@ def get_recommendation(input_text='', number_of_recommend=1):
         print(recommendation(answer_similarity_text(input_text), number_of_recommend))
 
 
-# input เป็น คำตอบของ anna
+# วิธีใช้
+# get_recommendation(string คำตอบของแอนนา, int จำนวน Recommendation)
+
+# ตัวอย่าง
 # get_recommendation('ช่วยเรื่องการนอน เช่น เมลาโทนิน',5)
 # get_recommendation('ตอบ มั่วๆ',5)
+
+# วิธีนำไปใช้ 
+# 1. สามารถอัพเดท model ด้วย google colab ที่ทำไว้ครับ https://colab.research.google.com/drive/1wZoaYql-A9qEeJG8CINw0zuZo0RfvBIk
+# 2. นำไฟล์ ที่เทรนใหม่มา วางไว้ ที่ Directory ที่ตรงกับ ##Directory##
+# 3. รันได้เลยใช้  get_recommendation(คำจาก anna อะไรก็ได้,5)
