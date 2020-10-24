@@ -60,10 +60,15 @@ class RecommendationRecommend(Resource):
         # remove duplicate
         nutrition_data = list(set(nutrition_data))
 
+        # response_data = {
+        #     "nutrition_data": ", ".join(nutrition_data),
+        #     "intent": "in_recommendation"}
+        # response_header = {
+        #     "Response-Type": "object"}
         response_data = {
-            "nutrition_data": ", ".join(nutrition_data),
-            "intent": "in_recommendation"}
-        response_header = {
-            "Response-Type": "object"}
+            "nutrition_data": ", ".join(nutrition_data)
+        }
+
+        response_header = {}
 
         return response_data, 200, response_header
