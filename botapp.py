@@ -2,7 +2,6 @@ import base64
 import hashlib
 import hmac
 
-
 import os
 import os.path
 from dotenv import load_dotenv
@@ -20,6 +19,7 @@ from dseg8.utility import BMI_Calculator, BMI_Result
 from dseg8.personal_supplement import PersonalSupplement  # , TestApi
 from dseg8.gmap import LocationSearch
 from dseg8.personal_sup_ans import Get_Personal_sup_ans
+from dseg8.recommendation_api import RecommendationKeep, RecommendationRecommend
 
 load_dotenv()
 
@@ -28,15 +28,14 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "./credentials.json"
 app = Flask(__name__)
 api = Api(app)
 
-
 app.url_map.strict_slashes = False
 
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 CORS(app)
 
-
 api.add_resource(LinebotApp, '/api/linebot')
+
 
 # Adding route for liff app
 
@@ -53,6 +52,7 @@ def static_files(filename):
     else:
         # Return not found http status code 404 and use browser default 404 page
         return abort(404)
+
 
 # @app.after_request
 # def add_header(response):
@@ -75,7 +75,7 @@ class get_BMI(Resource):
         dictp['height'] = float(request.args.get("height"))
         bmi = BMI_Calculator(dictp['weight'], dictp['height'])
         bmi_result = BMI_Result(bmi)
-        return {"bmi": round(bmi * 100)/100, "bmi_result": bmi_result}
+        return {"bmi": round(bmi * 100) / 100, "bmi_result": bmi_result}
 
 
 api.add_resource(get_BMI, '/get_BMI', endpoint='get_BMI')
@@ -83,6 +83,8 @@ api.add_resource(get_BMI, '/get_BMI', endpoint='get_BMI')
 
 api.add_resource(PersonalSupplement, '/api/personal-supplement')
 api.add_resource(LocationSearch, '/api/location')
+
+
 # api.add_resource(TestApi, '/api/test')
 
 
@@ -93,23 +95,26 @@ class get_Personal_Sup(Resource):
             "customer_id"))  # change from lineID
         result = Get_Personal_sup_ans(dictp['lineID'])
         return {
-            "line_payload": [
-                {
-                    "type": "text",
-                    "text": "อันนาแนะนำอาหารเสริมกลุ่มนี้นะคะ"
-                },
-                {
-                    "type": "text",
-                    "text": ", ".join(result)
-                }
-            ]
-        }, 200, {"reply-by-object": "true"}
+                   "line_payload": [
+                       {
+                           "type": "text",
+                           "text": "อันนาแนะนำอาหารเสริมกลุ่มนี้นะคะ"
+                       },
+                       {
+                           "type": "text",
+                           "text": ", ".join(result)
+                       }
+                   ]
+               }, 200, {"reply-by-object": "true"}
         # return {"answerlist": Get_Personal_sup_ans(dictp['lineID'])}
 
 
 api.add_resource(get_Personal_Sup, '/get_Personal_Sup',
                  endpoint='get_Personal_Sup')
 # api get personal sup
+
+api.add_resource(RecommendationKeep, "/api/keep", endpoint="Recommendation_Keep")
+api.add_resource(RecommendationRecommend, '/api/recommend', endpoint="recommendation_recommend")
 
 ###
 if __name__ == "__main__":
