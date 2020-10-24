@@ -47,7 +47,7 @@ class RecommendationRecommend(Resource):
         recommends = []
         for intent in intents:
             answer_text = intent_to_answer.get(intent, "")
-            recommendations = get_recommendation(answer_text, 5)
+            recommendations = get_recommendation(answer_text, 8)
             # print("answer_text = {}".format(answer_text))
             # print("recommendations", recommendations)
             recommends.extend(recommendations)
